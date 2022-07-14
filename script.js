@@ -1,4 +1,5 @@
 // Input: n/a | Output: str
+// 
 // randomly returns a string of either 'rock', 'paper', 
 // or 'scissors' (equal chance for each)
 
@@ -7,8 +8,8 @@ function computerPlay() {
 
     // generate a random whole number from 0 to 2 inclusive
     const randNum = Math.floor((Math.random() * 3));
-
-    return PLAYS[randNum];
+    const result = PLAYS[randNum];
+    return result;
 }
 
 // Input: 
@@ -35,6 +36,7 @@ function playRound(playerSelection, computerSelection) {
             
             case 'scissors':
                 return "You win! Rock beats scissors!";
+                break;
         }
     }
 
@@ -47,6 +49,7 @@ function playRound(playerSelection, computerSelection) {
             
             case 'rock':
                 return "You win! Paper beats rock!";
+                break;
         }
     }
 
@@ -59,14 +62,50 @@ function playRound(playerSelection, computerSelection) {
             
             case 'paper':
                 return "You win! Scissors beats paper!";
+                break;
         }
     }
 
+    // edge case: playerSelection is not rock, paper, or scissors
     return "Error! Must enter 'rock', 'paper', or 'scissors'";
 }
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+// Input: n/a
+// Output: n/a
+// 
+// plays a five round game
+// user given prompts to participate
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let playerPlay = '';
+    let computerMove = '';
+    let result = '';
+
+    // play round five times
+    for (i = 0; i < 5; i++) {
+        // gather player and computer choices
+        playerPlay = prompt('Please choose rock, paper, or scissors!', 'rock');
+        computerMove = computerPlay();
+        result = playRound(playerPlay, computerMove);
+
+        // edit scores
+        if (result.includes('win')) {
+            playerScore ++;
+        } else if (result.includes('lose')) {
+            computerScore ++;
+        }
+
+        // log round results including current scores
+        console.log(result);
+        console.log(`The player has ${playerScore} points and the computer has ${computerScore} points`);
+    }
+
+    // log game results 
+    console.log(playerScore > computerScore ? "You win!" : playerScore < computerScore ? "You lose!" : "The game is a tie!");
+}
+
+game();
 
 
