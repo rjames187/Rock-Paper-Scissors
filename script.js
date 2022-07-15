@@ -76,15 +76,28 @@ function playRound(playerSelection) {
     const display = document.querySelector(".message-display");
     display.textContent = message;
 
+    const pscore = document.getElementById("player");
+    const cscore = document.getElementById("computer");
+
     if (message.includes("win")) {
-        const pscore = document.getElementById("player");
         pscore.textContent = `${1 + +pscore.textContent}`;
     } else {
-        const cscore = document.getElementById("computer");
         cscore.textContent = `${1 + +cscore.textContent}`;
     }
 
-    
+    if (pscore.textContent === '5' || cscore.textContent === '5') {
+        const buttonGroup = document.querySelector('.buttons');
+        buttonGroup.remove();
+
+        const playAgain = document.createElement('button');
+        playAgain.textContent = 'Play Again';
+        playAgain.addEventListener('click', () => {
+            document.location.reload(true);
+        });
+
+        const controlPanel = document.querySelector('.control-panel');
+        controlPanel.appendChild(playAgain);
+    }
 }
 
 // Input: n/a
