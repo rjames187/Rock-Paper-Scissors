@@ -17,10 +17,10 @@ function computerPlay() {
 //      computerSelection (str) : 'rock', 'paper', or 'scissors'
 // Output: a string declaring the outcome of the round
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
     // make input strings case insensitive
     playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
+    computerSelection = computerPlay();
 
     // case: tie
     if (playerSelection === computerSelection) {
@@ -83,29 +83,18 @@ function game() {
     let computerMove = '';
     let result = '';
 
-    // play round five times
-    for (i = 0; i < 5; i++) {
-        // gather player and computer choices
-        playerPlay = prompt('Please choose rock, paper, or scissors!', 'rock');
-        computerMove = computerPlay();
-        result = playRound(playerPlay, computerMove);
-
-        // edit scores
-        if (result.includes('win')) {
-            playerScore ++;
-        } else if (result.includes('lose')) {
-            computerScore ++;
-        }
-
-        // log round results including current scores
-        console.log(result);
-        console.log(`The player has ${playerScore} points and the computer has ${computerScore} points`);
-    }
 
     // log game results 
     console.log(playerScore > computerScore ? "You win!" : playerScore < computerScore ? "You lose!" : "The game is a tie!");
 }
 
-game();
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => {
+    playerMove = button.id;
+    console.log(playerMove);
+    button.addEventListener('click', () => {playRound(playerMove)});
+});
+
+//game();
 
 
