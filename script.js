@@ -22,20 +22,22 @@ function playRound(playerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerPlay();
 
+    let message = "";
+
     // case: tie
     if (playerSelection === computerSelection) {
-        return "It's a tie!";
+        message = "It's a tie!";
     }
 
     // cases for player plays rock
     if (playerSelection === 'rock') {
         switch (computerSelection) {
             case 'paper':
-                return "You lose! Paper beats rock!";
+                message = "You lose! Paper beats rock!";
                 break;
             
             case 'scissors':
-                return "You win! Rock beats scissors!";
+                message = "You win! Rock beats scissors!";
                 break;
         }
     }
@@ -44,11 +46,11 @@ function playRound(playerSelection) {
     if (playerSelection === 'paper') {
         switch (computerSelection) {
             case 'scissors':
-                return "You lose! Scissors beats paper!";
+                message = "You lose! Scissors beats paper!";
                 break;
             
             case 'rock':
-                return "You win! Paper beats rock!";
+                message = "You win! Paper beats rock!";
                 break;
         }
     }
@@ -57,17 +59,32 @@ function playRound(playerSelection) {
     if (playerSelection === 'scissors') {
         switch (computerSelection) {
             case 'rock':
-                return "You lose! Rock beats scissors!";
+                message = "You lose! Rock beats scissors!";
                 break;
             
             case 'paper':
-                return "You win! Scissors beats paper!";
+                message = "You win! Scissors beats paper!";
                 break;
         }
     }
 
     // edge case: playerSelection is not rock, paper, or scissors
-    return "Error! Must enter 'rock', 'paper', or 'scissors'";
+    if (message === ""){
+        message = "Error! Must enter 'rock', 'paper', or 'scissors'";
+    }
+
+    const display = document.querySelector(".message-display");
+    display.textContent = message;
+
+    if (message.includes("win")) {
+        const pscore = document.getElementById("player");
+        pscore.textContent = `${1 + +pscore.textContent}`;
+    } else {
+        const cscore = document.getElementById("computer");
+        cscore.textContent = `${1 + +cscore.textContent}`;
+    }
+
+    
 }
 
 // Input: n/a
