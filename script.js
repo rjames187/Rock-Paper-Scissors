@@ -14,12 +14,13 @@ function computerPlay() {
 
 // Input: 
 //      playerSelection (str) : 'rock', 'paper', or 'scissors'
-//      computerSelection (str) : 'rock', 'paper', or 'scissors'
-// Output: a string declaring the outcome of the round
+// Output: n/a
+// 
+// Takes a player move along with a randomly generated computer move, calculates
+//      a round outcome, adjusts score accordingly, checks if either player has 
+//      5 points, and ends game if so
 
 function playRound(playerSelection) {
-    // make input strings case insensitive
-    playerSelection = playerSelection.toLowerCase();
     computerSelection = computerPlay();
 
     let message = "";
