@@ -1,7 +1,7 @@
 // Input: n/a | Output: str
 // 
 // randomly returns a string of either 'rock', 'paper', 
-// or 'scissors' (equal chance for each)
+//      or 'scissors' (equal chance for each)
 
 function computerPlay() {
     const PLAYS = ['rock', 'paper', 'scissors'];
@@ -69,11 +69,6 @@ function playRound(playerSelection) {
         }
     }
 
-    // edge case: playerSelection is not rock, paper, or scissors
-    if (message === ""){
-        message = "Error! Must enter 'rock', 'paper', or 'scissors'";
-    }
-
     const display = document.querySelector(".message-display");
     display.textContent = message;
 
@@ -107,6 +102,7 @@ function playRound(playerSelection) {
     }
 }
 
+// rock, paper, and scissors button event listeners
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => {
     playerMove = button.id;
