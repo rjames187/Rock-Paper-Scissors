@@ -97,25 +97,13 @@ function playRound(playerSelection) {
 
         const controlPanel = document.querySelector('.control-panel');
         controlPanel.appendChild(playAgain);
+
+        const overMessage = (+pscore.textContent > +cscore.textContent) ? 
+            " The game is over. You win!" : (+pscore.textContent < +cscore.textContent) ?
+            " The game is over. You lose!" : "The game is over. It's a tie!";
+        
+        display.textContent += overMessage;
     }
-}
-
-// Input: n/a
-// Output: n/a
-// 
-// plays a five round game
-// user given prompts to participate
-
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    let playerPlay = '';
-    let computerMove = '';
-    let result = '';
-
-
-    // log game results 
-    console.log(playerScore > computerScore ? "You win!" : playerScore < computerScore ? "You lose!" : "The game is a tie!");
 }
 
 const buttons = document.querySelectorAll('button');
@@ -125,6 +113,5 @@ buttons.forEach(button => {
     button.addEventListener('click', () => {playRound(playerMove)});
 });
 
-//game();
 
 
