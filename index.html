@@ -5,23 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css"/>
     <script src="script.js" defer></script>
 </head>
 <body>
     <main>
-        <h1>Play Rock Paper Scissors!</h1>
+        <h1 class="label">Play Rock Paper Scissors!</h1>
         <div class="profiles">
             <div class="profile">
-                <img class="profile-pic"/>
-                <div id="player" class="score">0</div>
+                <div id="player" class="screen score">0</div>
+                <div class="label">Human Score</div>
             </div>
             <div class="profile">
-                <img class="profile-pic"/>
-                <div id="computer" class="score">0</div>
+                <div id="computer" class="screen score">0</div>
+                <div class="label">Machine Score</div>
             </div>
         </div>
         <div class="control-panel">
-            <h2>Control Panel</h2>
+            <h2 class="label">Control Panel</h2>
             <div class="buttons">
                 <button id="rock">Rock</button>
                 <button id="paper">Paper</button>
@@ -29,8 +30,8 @@
             </div>
         </div>
         <div class="message-center">
-            <h2>Message Center</h2>
-            <div class="message-display">Choose a weapon to begin the game</div>
+            <h2 class="label">Message Center</h2>
+            <div class="screen message-display">Choose a weapon to begin the game. Can you beat the machine? (You must get to five wins before it does)</div>
         </div>
     </main>
 </body>
