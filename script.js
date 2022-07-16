@@ -22,6 +22,7 @@ function computerPlay() {
 
 function playRound(playerSelection) {
     computerSelection = computerPlay();
+    console.log(playerSelection);
 
     let message = "";
 
@@ -104,11 +105,11 @@ function playRound(playerSelection) {
 
 // rock, paper, and scissors button event listeners
 const buttons = document.querySelectorAll('button');
-buttons.forEach(button => {
-    playerMove = button.id;
-    console.log(playerMove);
+
+for (let button of buttons) {
+    let playerMove = button.id;
     button.addEventListener('click', () => {playRound(playerMove)});
-});
+}
 
 
 
